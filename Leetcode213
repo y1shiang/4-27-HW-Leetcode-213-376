@@ -1,0 +1,22 @@
+Rob(nums):
+if nums is empty
+    return 0
+if length of nums == 1
+    return nums[0]
+if length of nums == 2
+    return max(nums[0], nums[1])
+max1 = RobLinear(nums from index 0 to length-2)
+max2 = RobLinear(nums from index 1 to length-1)
+return max(max1, max2)
+
+RobLinear(nums_slice):
+    dp = array with same length as nums_slice
+    dp[0] = nums_slice[0]
+    dp[1] = max(nums_slice[0], nums_slice[1])
+    for i from 2 -> length(nums_slice) - 1:
+        Current = dp[i-2] + nums_slice[i]
+        Skip = dp[i-1]
+        dp[i] = max(Current, Skip)
+    return dp[length(nums_slice) - 1]
+
+main
