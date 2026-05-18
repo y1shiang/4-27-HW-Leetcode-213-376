@@ -1,0 +1,15 @@
+LeetCode 376
+MaxLength(nums)
+if nums is empty
+    return 0
+up = 1
+down = 1
+for i from 1 to length(nums) - 1:
+    if nums[i] > nums[i-1]:
+        // 呈現上升趨勢，接在先前的下降趨勢之後
+        up = down + 1
+    else if nums[i] < nums[i-1]:
+        // 呈現下降趨勢，接在先前的上升趨勢之後
+        down = up + 1
+   // 如果 nums[i] == nums[i-1]，不做任何事 (直接 skip)
+return max(up, down)
